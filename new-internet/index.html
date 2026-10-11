@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>New Internet — Compare Home Internet Prices Near You</title>
+<meta name="description" content="Compare home internet prices, speeds and plan types from major providers. Independent comparison service. Free to use.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cobalt:#2340E0;
+    --midnight:#10194A;
+    --fog:#EEF1FB;
+    --white:#FFFFFF;
+    --mint:#3DDC97;
+    --slate:#5B6385;
+    --line:#D6DCF2;
+    --display:'Bricolage Grotesque', system-ui, sans-serif;
+    --body:'Instrument Sans', system-ui, sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--body);color:var(--midnight);background:var(--fog);line-height:1.55;font-size:17px;padding-bottom:72px}
+  a{color:inherit}
+  :focus-visible{outline:3px solid var(--mint);outline-offset:3px;border-radius:4px}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+
+  /* Disclosure bar */
+  .disclose{background:var(--midnight);color:#C9CFEA;font-size:13px;text-align:center;padding:8px 16px}
+
+  /* Header */
+  header{background:var(--white);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{font-family:var(--display);font-weight:800;font-size:24px;text-decoration:none;letter-spacing:-.02em;display:flex;align-items:center;gap:10px}
+  .logo-mark{width:30px;height:30px;border-radius:50%;background:var(--cobalt);position:relative;overflow:hidden}
+  .logo-mark::after{content:"";position:absolute;inset:7px;border-radius:50%;border:3px solid var(--mint);border-left-color:transparent;border-bottom-color:transparent}
+  .nav-links{display:flex;gap:28px;font-weight:500;font-size:15px}
+  .nav-links a{text-decoration:none;color:var(--slate)}
+  .nav-links a:hover{color:var(--cobalt)}
+  .call-btn{background:var(--cobalt);color:var(--white);text-decoration:none;font-weight:600;padding:11px 18px;border-radius:999px;font-size:15px;white-space:nowrap}
+  .call-btn:hover{background:var(--midnight)}
+
+  /* Hero */
+  .hero{background:var(--cobalt);color:var(--white);overflow:hidden;position:relative}
+  .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;padding-top:72px;padding-bottom:80px;align-items:center}
+  .hero h1{font-family:var(--display);font-weight:800;font-size:clamp(40px,6vw,72px);line-height:.98;letter-spacing:-.035em;max-width:13ch}
+  .hero p.lead{font-size:19px;margin-top:20px;max-width:46ch;color:#DCE2FF}
+  .zip-form{margin-top:32px;display:flex;background:var(--white);border-radius:999px;padding:6px;max-width:440px}
+  .zip-form input{flex:1;border:0;background:transparent;font:inherit;font-size:18px;padding:10px 18px;color:var(--midnight);min-width:0}
+  .zip-form input:focus{outline:none}
+  .zip-form:focus-within{box-shadow:0 0 0 3px var(--mint)}
+  .zip-form button{border:0;background:var(--midnight);color:var(--white);font:inherit;font-weight:600;padding:12px 22px;border-radius:999px;cursor:pointer}
+  .zip-msg{margin-top:12px;font-size:15px;min-height:24px;color:var(--mint)}
+  .hero-phone{margin-top:8px;font-size:15px;color:#DCE2FF}
+  .hero-phone a{color:var(--white);font-weight:600}
+
+  /* The memorable element: price meter */
+  .meter{background:var(--midnight);border-radius:28px;padding:28px;box-shadow:0 30px 60px -20px rgba(16,25,74,.6)}
+  .meter h2{font-family:var(--display);font-size:22px;font-weight:700;letter-spacing:-.01em}
+  .meter .sub{color:#AEB6DA;font-size:14px;margin-top:4px}
+  .usage{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:20px}
+  .usage button{background:transparent;border:1.5px solid #34407A;color:var(--white);font:inherit;font-size:15px;text-align:left;padding:12px 14px;border-radius:14px;cursor:pointer;transition:border-color .15s,background .15s}
+  .usage button small{display:block;color:#AEB6DA;font-size:13px}
+  .usage button[aria-pressed="true"]{border-color:var(--mint);background:#16245F}
+  .readout{margin-top:24px;padding-top:20px;border-top:1px solid #2A3570;display:flex;justify-content:space-between;align-items:flex-end;gap:16px}
+  .readout .speed{font-family:var(--display);font-size:56px;font-weight:800;line-height:1;letter-spacing:-.04em;color:var(--mint)}
+  .readout .speed span{font-size:20px;letter-spacing:0;color:#AEB6DA;margin-left:4px}
+  .readout .cost{text-align:right;font-size:14px;color:#AEB6DA}
+  .readout .cost strong{display:block;font-family:var(--display);font-size:26px;color:var(--white)}
+  .meter-link{display:block;margin-top:20px;text-align:center;background:var(--mint);color:var(--midnight);font-weight:600;text-decoration:none;padding:13px;border-radius:999px}
+
+  /* Section */
+  section.block{padding:80px 0}
+  .block h2.title{font-family:var(--display);font-size:clamp(30px,4vw,44px);letter-spacing:-.03em;line-height:1.05;max-width:20ch}
+  .block p.intro{color:var(--slate);margin-top:12px;max-width:60ch}
+
+  /* Filters */
+  .filters{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px;align-items:center}
+  .chip{border:1.5px solid var(--line);background:var(--white);font:inherit;font-size:15px;font-weight:500;padding:8px 16px;border-radius:999px;cursor:pointer;color:var(--midnight)}
+  .chip[aria-pressed="true"]{background:var(--midnight);border-color:var(--midnight);color:var(--white)}
+  .sort{margin-left:auto;font-size:15px;color:var(--slate);display:flex;gap:8px;align-items:center}
+  .sort select{font:inherit;padding:8px 12px;border-radius:10px;border:1.5px solid var(--line);background:var(--white);color:var(--midnight)}
+
+  /* Plan rows — a table, not a card grid */
+  .plans{margin-top:24px;background:var(--white);border-radius:20px;border:1px solid var(--line);overflow:hidden}
+  .row{display:grid;grid-template-columns:1.4fr 1fr .9fr 1fr 1.1fr;align-items:center;gap:16px;padding:20px 24px;border-top:1px solid var(--line)}
+  .row:first-child{border-top:0}
+  .row.head{background:var(--fog);font-size:13px;font-weight:600;color:var(--slate);padding-top:12px;padding-bottom:12px}
+  .prov{font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:-.01em}
+  .prov small{display:block;font-family:var(--body);font-weight:400;font-size:14px;color:var(--slate);letter-spacing:0}
+  .type{display:inline-block;font-size:13px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--fog);color:var(--cobalt)}
+  .type.fiber{background:#DDF8EC;color:#0F7A4D}
+  .spd{font-weight:600}
+  .spd small,.price small{display:block;font-weight:400;color:var(--slate);font-size:13px}
+  .price{font-family:var(--display);font-size:26px;font-weight:800;letter-spacing:-.03em}
+  .price sup{font-size:14px;vertical-align:top;margin-right:1px}
+  .row .call-btn{text-align:center;display:block}
+  .empty{padding:40px 24px;text-align:center;color:var(--slate)}
+  .fine{font-size:13px;color:var(--slate);margin-top:14px;max-width:80ch}
+
+  /* Plan types */
+  .types{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:40px;border-top:2px solid var(--midnight)}
+  .types div{padding:24px 24px 0 0}
+  .types h3{font-family:var(--display);font-size:22px;letter-spacing:-.01em}
+  .types p{color:var(--slate);font-size:15px;margin-top:8px}
+  .types .bar{height:6px;background:var(--line);border-radius:3px;margin-top:16px;overflow:hidden}
+  .types .bar i{display:block;height:100%;background:var(--cobalt)}
+  .types .barlabel{font-size:13px;color:var(--slate);margin-top:6px}
+
+  /* How it works — a real sequence */
+  .how{background:var(--white)}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:40px;counter-reset:s}
+  .steps li{list-style:none;counter-increment:s}
+  .steps li::before{content:counter(s);display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--cobalt);color:var(--white);font-family:var(--display);font-weight:800;font-size:20px;margin-bottom:16px}
+  .steps h3{font-family:var(--display);font-size:21px}
+  .steps p{color:var(--slate);font-size:16px;margin-top:6px}
+
+  /* FAQ */
+  details{border-bottom:1px solid var(--line);padding:20px 0}
+  details:first-of-type{border-top:1px solid var(--line);margin-top:32px}
+  summary{font-family:var(--display);font-weight:700;font-size:19px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font-size:26px;line-height:1;color:var(--cobalt);transition:transform .2s}
+  details[open] summary::after{transform:rotate(45deg)}
+  details p{color:var(--slate);margin-top:10px;max-width:68ch}
+
+  /* CTA band */
+  .band{background:var(--midnight);color:var(--white);padding:64px 0}
+  .band .wrap{display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap}
+  .band h2{font-family:var(--display);font-size:clamp(28px,4vw,40px);letter-spacing:-.03em;max-width:18ch;line-height:1.05}
+  .band .big-phone{font-family:var(--display);font-size:clamp(28px,4vw,40px);font-weight:800;color:var(--mint);text-decoration:none;letter-spacing:-.02em}
+
+  footer{background:var(--white);padding:48px 0 32px;font-size:14px;color:var(--slate);border-top:1px solid var(--line)}
+  footer .cols{display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap}
+  footer nav{display:flex;flex-direction:column;gap:10px}
+  footer nav a{text-decoration:none}
+  footer nav a:hover{color:var(--cobalt)}
+  @media (max-width:600px){footer nav{flex-direction:row;flex-wrap:wrap;gap:16px}}
+  footer .legal{margin-top:28px;max-width:90ch;font-size:13px;line-height:1.6}
+
+  /* Sticky mobile call bar */
+  .mobile-call{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--cobalt);color:var(--white);text-align:center;padding:16px;font-weight:600;text-decoration:none;font-size:17px;display:none}
+
+  @media (max-width:900px){
+    .hero .wrap{grid-template-columns:1fr;padding-top:48px;padding-bottom:56px}
+    .nav{height:auto;padding:12px 0;flex-wrap:wrap}
+    .nav-links{order:3;width:100%;gap:20px;font-size:14px;overflow-x:auto;white-space:nowrap;padding-top:10px}
+    .row{grid-template-columns:1fr 1fr;gap:10px 16px}
+    .row.head{display:none}
+    .row .prov{grid-column:1/-1}
+    .row .call-btn{grid-column:1/-1}
+    .types{grid-template-columns:1fr 1fr}
+    .steps{grid-template-columns:1fr}
+    .sort{margin-left:0;width:100%}
+    .mobile-call{display:block}
+    header .call-btn{display:none}
+  }
+  @media (min-width:901px){body{padding-bottom:0}}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<div class="disclose">New Internet is an independent comparison service. We are not the providers listed. Prices shown are starting rates and vary by address.</div>
+
+<header>
+  <div class="wrap nav">
+    <a href="index.html" class="logo"><span class="logo-mark" aria-hidden="true"></span>New Internet</a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="#compare">Compare plans</a>
+      <a href="#types">Plan types</a>
+      <a href="#how">How it works</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="call-btn js-phone" href="tel:+18880000000">Call (888) 000-0000</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h1>See every internet price at your address.</h1>
+        <p class="lead">Compare fiber, cable, 5G and satellite plans side by side, then talk to someone who can tell you what's actually available on your street.</p>
+        <form class="zip-form" id="zipForm" novalidate>
+          <label for="zip" class="sr" style="position:absolute;left:-9999px">ZIP code</label>
+          <input id="zip" inputmode="numeric" maxlength="5" placeholder="Enter your ZIP code" autocomplete="postal-code">
+          <button type="submit">Compare prices</button>
+        </form>
+        <p class="zip-msg" id="zipMsg" role="status"></p>
+        <p class="hero-phone">Prefer to talk? <a class="js-phone" href="tel:+18880000000">(888) 000-0000</a></p>
+      </div>
+
+      <div class="meter" aria-labelledby="meterTitle">
+        <h2 id="meterTitle">How much speed do you need?</h2>
+        <p class="sub">Pick everything your household does online.</p>
+        <div class="usage" id="usage">
+          <button type="button" aria-pressed="true" data-mbps="25">Browsing &amp; email<small>Light use</small></button>
+          <button type="button" aria-pressed="false" data-mbps="100">HD streaming<small>2–3 TVs</small></button>
+          <button type="button" aria-pressed="false" data-mbps="150">Working from home<small>Video calls</small></button>
+          <button type="button" aria-pressed="false" data-mbps="200">Online gaming<small>Low lag</small></button>
+          <button type="button" aria-pressed="false" data-mbps="300">4K streaming<small>Several screens</small></button>
+          <button type="button" aria-pressed="false" data-mbps="250">Smart home<small>10+ devices</small></button>
+        </div>
+        <div class="readout">
+          <div class="speed" id="speedOut">50<span>Mbps</span></div>
+          <div class="cost">Plans in this range from<strong id="costOut">$30/mo</strong></div>
+        </div>
+        <a href="#compare" class="meter-link" id="meterLink">Show matching plans</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="compare">
+    <div class="wrap">
+      <h2 class="title">Compare internet plans and prices</h2>
+      <p class="intro">Starting prices from major US providers. Availability depends on your exact address, so call to confirm what you can get.</p>
+
+      <div class="filters" role="group" aria-label="Filter by connection type">
+        <button class="chip" data-type="all" aria-pressed="true">All types</button>
+        <button class="chip" data-type="Fiber" aria-pressed="false">Fiber</button>
+        <button class="chip" data-type="Cable" aria-pressed="false">Cable</button>
+        <button class="chip" data-type="5G" aria-pressed="false">5G home</button>
+        <button class="chip" data-type="Satellite" aria-pressed="false">Satellite</button>
+        <label class="sort">Sort by
+          <select id="sortBy">
+            <option value="price">Lowest price</option>
+            <option value="speed">Fastest speed</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="plans" id="plans" aria-live="polite"></div>
+      <p class="fine">Prices are sample starting rates for illustration and may not reflect current offers. Many plans require autopay, paperless billing, or a contract; taxes, equipment and installation fees may apply. Speeds are maximum advertised wired speeds and are not guaranteed.</p>
+    </div>
+  </section>
+
+  <section class="block" id="types" style="padding-top:0">
+    <div class="wrap">
+      <h2 class="title">Which connection type is right for you?</h2>
+      <div class="types">
+        <div><h3>Fiber</h3><p>Fastest and most reliable, with equal upload and download speeds. Limited to certain neighborhoods.</p><div class="bar"><i style="width:100%"></i></div><div class="barlabel">Up to 8 Gbps</div></div>
+        <div><h3>Cable</h3><p>Widely available and fast enough for most homes. Upload speeds are lower than download.</p><div class="bar"><i style="width:60%"></i></div><div class="barlabel">Up to 2 Gbps</div></div>
+        <div><h3>5G home</h3><p>No cables or install visit. Speeds depend on signal strength at your address.</p><div class="bar"><i style="width:28%"></i></div><div class="barlabel">Typically 100–400 Mbps</div></div>
+        <div><h3>Satellite</h3><p>Works almost anywhere, including rural areas with no other options.</p><div class="bar"><i style="width:18%"></i></div><div class="barlabel">Typically 25–250 Mbps</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block how" id="how">
+    <div class="wrap">
+      <h2 class="title">How New Internet works</h2>
+      <ol class="steps">
+        <li><h3>Enter your ZIP</h3><p>We narrow the list to providers that serve your area.</p></li>
+        <li><h3>Compare prices</h3><p>See speeds, starting prices and plan types side by side.</p></li>
+        <li><h3>Call to confirm</h3><p>A specialist checks your exact address and helps you order. The call is free.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" id="faq">
+    <div class="wrap">
+      <h2 class="title">Questions people ask</h2>
+      <details><summary>Is New Internet an internet provider?</summary><p>No. New Internet is an independent comparison service. We are not owned by or affiliated with the providers listed unless stated. We may be paid by providers or authorized retailers when you sign up through us, which never changes the price you pay.</p></details>
+      <details><summary>Why do prices change by address?</summary><p>Providers set prices and promotions by region, and not every plan is offered on every street. The prices on this page are starting rates; your exact price is confirmed when you check your address.</p></details>
+      <details><summary>Does it cost anything to use this site?</summary><p>No. Comparing plans and calling us is free.</p></details>
+      <details><summary>What's the cheapest home internet?</summary><p>Low-speed cable or 5G home plans usually have the lowest monthly price. Many providers also offer low-income discount programs; ask when you call.</p></details>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Find out what's available at your address.</h2>
+      <a class="big-phone js-phone" href="tel:+18880000000">(888) 000-0000</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div><strong style="color:var(--midnight)">New Internet</strong><br>Independent home internet comparison<br>
+        <a class="js-phone" href="tel:+18880000000" style="color:var(--cobalt);font-weight:600">(888) 000-0000</a></div>
+      <nav aria-label="Browse">
+        <a href="#compare">Compare plans</a>
+        <a href="#types">Plan types</a>
+        <a href="#how">How it works</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <nav aria-label="Legal">
+        <a href="privacy.html">Privacy policy</a>
+        <a href="terms.html">Terms of use</a>
+        <a href="disclosure.html">Advertiser disclosure</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+    <p class="legal">New Internet is an independent comparison website and is not a provider of internet services. All trademarks and brand names belong to their respective owners and are used for identification only. Prices, speeds and availability are subject to change and vary by location. We may receive compensation from providers or authorized retailers. © <span id="yr"></span> New Internet. All rights reserved.</p>
+  </div>
+</footer>
+
+<a class="mobile-call js-phone" href="tel:+18880000000">Call now: (888) 000-0000</a>
+
+<script>
+  // ===== Edit these =====
+  const PHONE_DISPLAY = "(888) 000-0000";
+  const PHONE_TEL = "+18880000000";
+
+  // Sample plans — verify current pricing before going live
+  const PLANS = [
+    {p:"AT&T Fiber", n:"Fiber 300", t:"Fiber", s:300, up:300, $:55},
+    {p:"Verizon Fios", n:"300 Mbps", t:"Fiber", s:300, up:300, $:49.99},
+    {p:"Google Fiber", n:"1 Gig", t:"Fiber", s:1000, up:1000, $:70},
+    {p:"Frontier Fiber", n:"Fiber 500", t:"Fiber", s:500, up:500, $:44.99},
+    {p:"Xfinity", n:"300 Mbps", t:"Cable", s:300, up:20, $:40},
+    {p:"Spectrum", n:"Internet", t:"Cable", s:500, up:20, $:49.99},
+    {p:"Cox", n:"Go Fast", t:"Cable", s:300, up:10, $:50},
+    {p:"T-Mobile Home Internet", n:"All-In", t:"5G", s:245, up:31, $:50},
+    {p:"Verizon 5G Home", n:"5G Home", t:"5G", s:250, up:20, $:50},
+    {p:"Starlink", n:"Residential", t:"Satellite", s:220, up:20, $:120},
+    {p:"Viasat", n:"Unleashed", t:"Satellite", s:100, up:3, $:99.99},
+    {p:"EarthLink", n:"Fiber 100", t:"Fiber", s:100, up:100, $:49.95}
+  ];
+
+  document.querySelectorAll(".js-phone").forEach(a=>{
+    a.href = "tel:"+PHONE_TEL;
+    a.textContent = a.textContent.replace("(888) 000-0000", PHONE_DISPLAY);
+  });
+  document.getElementById("yr").textContent = new Date().getFullYear();
+
+  let typeFilter = "all", minSpeed = 0;
+  const plansEl = document.getElementById("plans");
+  const fmtSpeed = s => s>=1000 ? (s/1000)+" Gbps" : s+" Mbps";
+
+  function render(){
+    const sort = document.getElementById("sortBy").value;
+    let list = PLANS.filter(x => (typeFilter==="all"||x.t===typeFilter) && x.s>=minSpeed);
+    list.sort((a,b)=> sort==="price" ? a.$-b.$ : b.s-a.s);
+    let html = `<div class="row head"><div>Provider</div><div>Type</div><div>Download</div><div>Starting at</div><div></div></div>`;
+    if(!list.length){
+      html += `<div class="empty">No plans match these filters. Choose another connection type, or call ${PHONE_DISPLAY} to check your address.</div>`;
+    }
+    list.forEach(x=>{
+      const [d,c] = x.$.toFixed(2).split(".");
+      html += `<div class="row">
+        <div class="prov">${x.p}<small>${x.n}</small></div>
+        <div><span class="type ${x.t==="Fiber"?"fiber":""}">${x.t==="5G"?"5G home":x.t}</span></div>
+        <div class="spd">${fmtSpeed(x.s)}<small>${fmtSpeed(x.up)} upload</small></div>
+        <div class="price"><sup>$</sup>${d}<sup>.${c}</sup><small>per month</small></div>
+        <a class="call-btn" href="tel:${PHONE_TEL}">Check availability</a>
+      </div>`;
+    });
+    plansEl.innerHTML = html;
+  }
+
+  document.querySelectorAll(".chip").forEach(c=>c.addEventListener("click",()=>{
+    document.querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed","false"));
+    c.setAttribute("aria-pressed","true");
+    typeFilter = c.dataset.type; render();
+  }));
+  document.getElementById("sortBy").addEventListener("change", render);
+
+  // Speed meter: add up needs, show recommended speed and cheapest matching price
+  const usageBtns = document.querySelectorAll("#usage button");
+  function updateMeter(){
+    let total = 0;
+    usageBtns.forEach(b=>{ if(b.getAttribute("aria-pressed")==="true") total += +b.dataset.mbps; });
+    const rec = total<=25 ? 50 : total<=150 ? 100 : total<=300 ? 300 : total<=600 ? 500 : 1000;
+    document.getElementById("speedOut").innerHTML = (rec>=1000?"1":rec)+`<span>${rec>=1000?"Gbps":"Mbps"}</span>`;
+    const match = PLANS.filter(p=>p.s>=rec).sort((a,b)=>a.$-b.$)[0];
+    document.getElementById("costOut").textContent = match ? "$"+Math.floor(match.$)+"/mo" : "Call us";
+    minSpeed = rec;
+  }
+  usageBtns.forEach(b=>b.addEventListener("click",()=>{
+    b.setAttribute("aria-pressed", b.getAttribute("aria-pressed")==="true" ? "false":"true");
+    updateMeter();
+  }));
+  document.getElementById("meterLink").addEventListener("click",()=>{
+    typeFilter="all";
+    document.querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed", x.dataset.type==="all"?"true":"false"));
+    render();
+  });
+
+  // ZIP form
+  document.getElementById("zipForm").addEventListener("submit",e=>{
+    e.preventDefault();
+    const z = document.getElementById("zip").value.trim(), msg = document.getElementById("zipMsg");
+    if(!/^\d{5}$/.test(z)){ msg.style.color="#FFD0D0"; msg.textContent="Enter a 5-digit US ZIP code."; return; }
+    msg.style.color=""; msg.innerHTML = `Showing plans for ${z}. Call <a href="tel:${PHONE_TEL}" style="color:#fff">${PHONE_DISPLAY}</a> to confirm your exact address.`;
+    minSpeed = 0; render();
+    document.getElementById("compare").scrollIntoView();
+  });
+
+  updateMeter(); minSpeed = 0; render();
+</script>
+</body>
+</html>

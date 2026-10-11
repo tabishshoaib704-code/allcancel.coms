@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact — New Internet</title>
+<meta name="description" content="Call or message New Internet about home internet plans, prices and availability.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="page.css">
+</head>
+<body>
+<div class="disclose">New Internet is an independent comparison service. We are not the providers listed.</div>
+<header>
+  <div class="wrap wide nav">
+    <a href="index.html" class="logo"><span class="logo-mark" aria-hidden="true"></span>New Internet</a>
+    <a class="call-btn js-phone" href="tel:+18880000000">Call (888) 000-0000</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <h1>Talk to us about your address</h1>
+    <p>The fastest way to find out what you can actually get is a phone call. A specialist checks your exact address while you are on the line, and the call is free.</p>
+
+    <div class="panel">
+      <h2 style="margin-top:0">Call</h2>
+      <p><a class="call-btn js-phone" href="tel:+18880000000">Call (888) 000-0000</a></p>
+      <p style="color:var(--slate);font-size:15px">Hours: [Mon–Sat, 9am–8pm ET]<br>Email: [hello@yourdomain.com]<br>Mailing address: [Street address, city, state, ZIP]</p>
+    </div>
+
+    <h2>Or send a message</h2>
+    <p>Fill this in and we will reply by email. This opens your email app with the message ready to send.</p>
+
+    <form id="contactForm" novalidate>
+      <label for="name">Your name</label>
+      <input id="name" name="name" autocomplete="name">
+
+      <label for="email">Email address</label>
+      <input id="email" name="email" type="email" autocomplete="email">
+
+      <label for="phone">Phone number (optional)</label>
+      <input id="phone" name="phone" type="tel" autocomplete="tel">
+
+      <label for="zipc">Service ZIP code</label>
+      <input id="zipc" name="zipc" inputmode="numeric" maxlength="5" autocomplete="postal-code">
+
+      <label for="topic">What is this about?</label>
+      <select id="topic" name="topic">
+        <option>Finding a plan at my address</option>
+        <option>A price shown on this site</option>
+        <option>Removing my information</option>
+        <option>Something else</option>
+      </select>
+
+      <label for="msg">Message</label>
+      <textarea id="msg" name="msg"></textarea>
+
+      <button type="submit" class="call-btn">Send message</button>
+      <p class="form-msg" id="formMsg" role="status"></p>
+    </form>
+
+    <p style="font-size:14px;color:var(--slate);margin-top:24px">By contacting us you agree we may reply by phone, text or email about internet service. See the <a href="privacy.html">privacy policy</a>.</p>
+
+    <a class="back" href="index.html">Back to comparing plans</a>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap wide">
+    <nav aria-label="Footer">
+      <a href="index.html">Compare plans</a>
+      <a href="privacy.html">Privacy policy</a>
+      <a href="terms.html">Terms of use</a>
+      <a href="disclosure.html">Advertiser disclosure</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <p class="legal">New Internet is an independent comparison website and is not a provider of internet services. All trademarks and brand names belong to their respective owners. © <span id="yr"></span> New Internet. All rights reserved.</p>
+  </div>
+</footer>
+
+<a class="mobile-call js-phone" href="tel:+18880000000">Call now: (888) 000-0000</a>
+<script src="phone.js"></script>
+<script>
+  // Change this to the inbox that should receive messages.
+  const CONTACT_EMAIL = "hello@yourdomain.com";
+
+  document.getElementById("contactForm").addEventListener("submit", e => {
+    e.preventDefault();
+    const v = id => document.getElementById(id).value.trim();
+    const msgEl = document.getElementById("formMsg");
+
+    if (!v("name") || !v("email") || !v("msg")) {
+      msgEl.style.color = "#B3261E";
+      msgEl.textContent = "Fill in your name, email and message so we can reply.";
+      return;
+    }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v("email"))) {
+      msgEl.style.color = "#B3261E";
+      msgEl.textContent = "That email address does not look right. Check it and try again.";
+      return;
+    }
+
+    const body = [
+      "Name: " + v("name"),
+      "Email: " + v("email"),
+      "Phone: " + (v("phone") || "not given"),
+      "ZIP: " + (v("zipc") || "not given"),
+      "Topic: " + v("topic"),
+      "",
+      v("msg")
+    ].join("\n");
+
+    window.location.href = "mailto:" + CONTACT_EMAIL +
+      "?subject=" + encodeURIComponent("Website enquiry: " + v("topic")) +
+      "&body=" + encodeURIComponent(body);
+
+    msgEl.style.color = "";
+    msgEl.textContent = "Your email app is opening with the message ready. Press send there to finish.";
+  });
+</script>
+</body>
+</html>
