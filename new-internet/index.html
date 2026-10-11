@@ -311,13 +311,17 @@
   const PLANS = [
     {p:"AT&T Fiber", n:"Fiber 300", t:"Fiber", s:300, up:300, $:55},
     {p:"Verizon Fios", n:"300 Mbps", t:"Fiber", s:300, up:300, $:49.99},
+    {p:"Verizon Fios", n:"1 Gig", t:"Fiber", s:940, up:880, $:89.99},
+    {p:"Verizon Fios", n:"2 Gig", t:"Fiber", s:2300, up:2300, $:109.99},
     {p:"Google Fiber", n:"1 Gig", t:"Fiber", s:1000, up:1000, $:70},
     {p:"Frontier Fiber", n:"Fiber 500", t:"Fiber", s:500, up:500, $:44.99},
     {p:"Xfinity", n:"300 Mbps", t:"Cable", s:300, up:20, $:40},
     {p:"Spectrum", n:"Internet", t:"Cable", s:500, up:20, $:49.99},
     {p:"Cox", n:"Go Fast", t:"Cable", s:300, up:10, $:50},
     {p:"T-Mobile Home Internet", n:"All-In", t:"5G", s:245, up:31, $:50},
-    {p:"Verizon 5G Home", n:"5G Home", t:"5G", s:250, up:20, $:50},
+    {p:"Verizon 5G Home", n:"5G Home", t:"5G", s:100, up:0, $:50},
+    {p:"Verizon 5G Home", n:"5G Home Plus", t:"5G", s:150, up:0, $:60},
+    {p:"Verizon 5G Home", n:"5G Home Ultimate", t:"5G", s:300, up:0, $:75},
     {p:"Starlink", n:"Residential", t:"Satellite", s:220, up:20, $:120},
     {p:"Viasat", n:"Unleashed", t:"Satellite", s:100, up:3, $:99.99},
     {p:"EarthLink", n:"Fiber 100", t:"Fiber", s:100, up:100, $:49.95}
@@ -346,7 +350,7 @@
       html += `<div class="row">
         <div class="prov">${x.p}<small>${x.n}</small></div>
         <div><span class="type ${x.t==="Fiber"?"fiber":""}">${x.t==="5G"?"5G home":x.t}</span></div>
-        <div class="spd">${fmtSpeed(x.s)}<small>${fmtSpeed(x.up)} upload</small></div>
+        <div class="spd">${fmtSpeed(x.s)}<small>${x.up ? fmtSpeed(x.up)+" upload" : "Upload varies"}</small></div>
         <div class="price"><sup>$</sup>${d}<sup>.${c}</sup><small>per month</small></div>
         <a class="call-btn" href="tel:${PHONE_TEL}">Check availability</a>
       </div>`;
