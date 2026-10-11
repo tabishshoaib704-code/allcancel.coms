@@ -1,0 +1,56 @@
+:root{
+  --cobalt:#2340E0;
+  --midnight:#10194A;
+  --fog:#EEF1FB;
+  --white:#FFFFFF;
+  --mint:#3DDC97;
+  --slate:#5B6385;
+  --line:#D6DCF2;
+  --display:'Bricolage Grotesque', system-ui, sans-serif;
+  --body:'Instrument Sans', system-ui, sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--body);color:var(--midnight);background:var(--fog);line-height:1.6;font-size:17px;padding-bottom:72px}
+a{color:var(--cobalt)}
+:focus-visible{outline:3px solid var(--mint);outline-offset:3px;border-radius:4px}
+.wrap{max-width:780px;margin:0 auto;padding:0 20px}
+.wrap.wide{max-width:1120px}
+
+.disclose{background:var(--midnight);color:#C9CFEA;font-size:13px;text-align:center;padding:8px 16px}
+header{background:var(--white);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font-family:var(--display);font-weight:800;font-size:24px;text-decoration:none;letter-spacing:-.02em;display:flex;align-items:center;gap:10px;color:var(--midnight)}
+.logo-mark{width:30px;height:30px;border-radius:50%;background:var(--cobalt);position:relative;overflow:hidden}
+.logo-mark::after{content:"";position:absolute;inset:7px;border-radius:50%;border:3px solid var(--mint);border-left-color:transparent;border-bottom-color:transparent}
+.call-btn{background:var(--cobalt);color:var(--white);text-decoration:none;font-weight:600;padding:11px 18px;border-radius:999px;font-size:15px;white-space:nowrap;display:inline-block;border:0;font-family:inherit;cursor:pointer}
+.call-btn:hover{background:var(--midnight)}
+
+main{padding:56px 0 64px}
+h1{font-family:var(--display);font-size:clamp(32px,5vw,48px);line-height:1.03;letter-spacing:-.03em;max-width:16ch}
+.updated{color:var(--slate);font-size:15px;margin-top:12px}
+h2{font-family:var(--display);font-size:24px;letter-spacing:-.02em;margin-top:40px}
+h3{font-family:var(--display);font-size:19px;margin-top:24px}
+p{margin-top:12px;max-width:72ch}
+ul{margin:12px 0 0 22px}
+li{margin-top:8px;max-width:70ch}
+.panel{background:var(--white);border:1px solid var(--line);border-radius:20px;padding:28px;margin-top:28px}
+.back{display:inline-block;margin-top:40px;font-weight:600;text-decoration:none}
+
+label{display:block;font-weight:600;font-size:15px;margin-top:18px}
+input,textarea,select{width:100%;font:inherit;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;background:var(--white);margin-top:6px;color:var(--midnight)}
+textarea{min-height:130px;resize:vertical}
+form .call-btn{margin-top:22px;padding:13px 24px;font-size:16px}
+.form-msg{margin-top:12px;font-size:15px;color:var(--slate);min-height:22px}
+
+footer{background:var(--white);padding:40px 0 32px;font-size:14px;color:var(--slate);border-top:1px solid var(--line)}
+footer nav{display:flex;gap:20px;flex-wrap:wrap}
+footer nav a{text-decoration:none}
+footer .legal{margin-top:24px;max-width:90ch;font-size:13px;line-height:1.6}
+
+.mobile-call{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--cobalt);color:var(--white);text-align:center;padding:16px;font-weight:600;text-decoration:none;font-size:17px;display:none}
+@media (max-width:900px){
+  .mobile-call{display:block}
+  header .call-btn{display:none}
+}
+@media (min-width:901px){body{padding-bottom:0}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
