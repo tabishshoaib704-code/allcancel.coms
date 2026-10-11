@@ -22,7 +22,7 @@ header{background:var(--white);border-bottom:1px solid var(--line);position:stic
 .logo{font-family:var(--display);font-weight:800;font-size:24px;text-decoration:none;letter-spacing:-.02em;display:flex;align-items:center;gap:10px;color:var(--midnight)}
 .logo-mark{width:30px;height:30px;border-radius:50%;background:var(--cobalt);position:relative;overflow:hidden}
 .logo-mark::after{content:"";position:absolute;inset:7px;border-radius:50%;border:3px solid var(--mint);border-left-color:transparent;border-bottom-color:transparent}
-.call-btn{background:var(--cobalt);color:var(--white);text-decoration:none;font-weight:600;padding:11px 18px;border-radius:999px;font-size:15px;white-space:nowrap;display:inline-block;border:0;font-family:inherit;cursor:pointer}
+.call-btn{background:var(--cobalt);color:var(--white);text-decoration:none;font-weight:600;padding:11px 18px;border-radius:8px;font-size:15px;white-space:nowrap;display:inline-block;border:0;font-family:inherit;cursor:pointer}
 .call-btn:hover{background:var(--midnight)}
 
 main{padding:56px 0 64px}
