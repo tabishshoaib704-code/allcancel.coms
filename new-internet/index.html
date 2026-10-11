@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>New Internet — Compare Home Internet Prices Near You</title>
+<title>New Internet | Compare Home Internet Prices</title>
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="description" content="Compare home internet prices, speeds and plan types from major providers. Independent comparison service. Free to use.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,7 +42,7 @@
   .nav-links{display:flex;gap:28px;font-weight:500;font-size:15px}
   .nav-links a{text-decoration:none;color:var(--slate)}
   .nav-links a:hover{color:var(--cobalt)}
-  .call-btn{background:var(--cobalt);color:var(--white);text-decoration:none;font-weight:600;padding:11px 18px;border-radius:999px;font-size:15px;white-space:nowrap}
+  .call-btn{background:var(--cobalt);color:var(--white);text-decoration:none;font-weight:600;padding:11px 18px;border-radius:8px;font-size:15px;white-space:nowrap}
   .call-btn:hover{background:var(--midnight)}
 
   /* Hero */
@@ -47,11 +50,11 @@
   .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;padding-top:72px;padding-bottom:80px;align-items:center}
   .hero h1{font-family:var(--display);font-weight:800;font-size:clamp(40px,6vw,72px);line-height:.98;letter-spacing:-.035em;max-width:13ch}
   .hero p.lead{font-size:19px;margin-top:20px;max-width:46ch;color:#DCE2FF}
-  .zip-form{margin-top:32px;display:flex;background:var(--white);border-radius:999px;padding:6px;max-width:440px}
+  .zip-form{margin-top:32px;display:flex;background:var(--white);border-radius:8px;padding:6px;max-width:440px}
   .zip-form input{flex:1;border:0;background:transparent;font:inherit;font-size:18px;padding:10px 18px;color:var(--midnight);min-width:0}
   .zip-form input:focus{outline:none}
   .zip-form:focus-within{box-shadow:0 0 0 3px var(--mint)}
-  .zip-form button{border:0;background:var(--midnight);color:var(--white);font:inherit;font-weight:600;padding:12px 22px;border-radius:999px;cursor:pointer}
+  .zip-form button{border:0;background:var(--midnight);color:var(--white);font:inherit;font-weight:600;padding:12px 22px;border-radius:8px;cursor:pointer}
   .zip-msg{margin-top:12px;font-size:15px;min-height:24px;color:var(--mint)}
   .hero-phone{margin-top:8px;font-size:15px;color:#DCE2FF}
   .hero-phone a{color:var(--white);font-weight:600}
@@ -69,7 +72,7 @@
   .readout .speed span{font-size:20px;letter-spacing:0;color:#AEB6DA;margin-left:4px}
   .readout .cost{text-align:right;font-size:14px;color:#AEB6DA}
   .readout .cost strong{display:block;font-family:var(--display);font-size:26px;color:var(--white)}
-  .meter-link{display:block;margin-top:20px;text-align:center;background:var(--mint);color:var(--midnight);font-weight:600;text-decoration:none;padding:13px;border-radius:999px}
+  .meter-link{display:block;margin-top:20px;text-align:center;background:var(--mint);color:var(--midnight);font-weight:600;text-decoration:none;padding:13px;border-radius:8px}
 
   /* Section */
   section.block{padding:80px 0}
@@ -78,19 +81,19 @@
 
   /* Filters */
   .filters{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px;align-items:center}
-  .chip{border:1.5px solid var(--line);background:var(--white);font:inherit;font-size:15px;font-weight:500;padding:8px 16px;border-radius:999px;cursor:pointer;color:var(--midnight)}
+  .chip{border:1.5px solid var(--line);background:var(--white);font:inherit;font-size:15px;font-weight:500;padding:8px 16px;border-radius:8px;cursor:pointer;color:var(--midnight)}
   .chip[aria-pressed="true"]{background:var(--midnight);border-color:var(--midnight);color:var(--white)}
   .sort{margin-left:auto;font-size:15px;color:var(--slate);display:flex;gap:8px;align-items:center}
   .sort select{font:inherit;padding:8px 12px;border-radius:10px;border:1.5px solid var(--line);background:var(--white);color:var(--midnight)}
 
-  /* Plan rows — a table, not a card grid */
+  /* Plan rows: a table, not a card grid */
   .plans{margin-top:24px;background:var(--white);border-radius:20px;border:1px solid var(--line);overflow:hidden}
   .row{display:grid;grid-template-columns:1.4fr 1fr .9fr 1fr 1.1fr;align-items:center;gap:16px;padding:20px 24px;border-top:1px solid var(--line)}
   .row:first-child{border-top:0}
   .row.head{background:var(--fog);font-size:13px;font-weight:600;color:var(--slate);padding-top:12px;padding-bottom:12px}
   .prov{font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:-.01em}
   .prov small{display:block;font-family:var(--body);font-weight:400;font-size:14px;color:var(--slate);letter-spacing:0}
-  .type{display:inline-block;font-size:13px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--fog);color:var(--cobalt)}
+  .type{display:inline-block;font-size:13px;font-weight:600;padding:4px 10px;border-radius:8px;background:var(--fog);color:var(--cobalt)}
   .type.fiber{background:#DDF8EC;color:#0F7A4D}
   .spd{font-weight:600}
   .spd small,.price small{display:block;font-weight:400;color:var(--slate);font-size:13px}
@@ -109,7 +112,7 @@
   .types .bar i{display:block;height:100%;background:var(--cobalt)}
   .types .barlabel{font-size:13px;color:var(--slate);margin-top:6px}
 
-  /* How it works — a real sequence */
+  /* How it works: a real sequence */
   .how{background:var(--white)}
   .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:40px;counter-reset:s}
   .steps li{list-style:none;counter-increment:s}
@@ -182,8 +185,8 @@
   <section class="hero">
     <div class="wrap">
       <div>
-        <h1>See every internet price at your address.</h1>
-        <p class="lead">Compare fiber, cable, 5G and satellite plans side by side, then talk to someone who can tell you what's actually available on your street.</p>
+        <h1>Compare fiber, cable, 5G and satellite internet prices.</h1>
+        <p class="lead">Starting prices and speeds from major US providers in one table. Call us with your address to find out which plans you can get.</p>
         <form class="zip-form" id="zipForm" novalidate>
           <label for="zip" class="sr" style="position:absolute;left:-9999px">ZIP code</label>
           <input id="zip" inputmode="numeric" maxlength="5" placeholder="Enter your ZIP code" autocomplete="postal-code">
@@ -253,7 +256,7 @@
     <div class="wrap">
       <h2 class="title">How New Internet works</h2>
       <ol class="steps">
-        <li><h3>Enter your ZIP</h3><p>We narrow the list to providers that serve your area.</p></li>
+        <li><h3>Check your area</h3><p>Prices on this site are national starting rates. Availability is confirmed for your exact address when you call.</p></li>
         <li><h3>Compare prices</h3><p>See speeds, starting prices and plan types side by side.</p></li>
         <li><h3>Call to confirm</h3><p>A specialist checks your exact address and helps you order. The call is free.</p></li>
       </ol>
@@ -307,7 +310,7 @@
   const PHONE_DISPLAY = "(844) 486-7871";
   const PHONE_TEL = "+18444867871";
 
-  // Sample plans — verify current pricing before going live
+  // Starting prices: verify current pricing before going live
   const PLANS = [
     {p:"AT&T Fiber", n:"Fiber 300", t:"Fiber", s:300, up:300, $:55},
     {p:"Verizon Fios", n:"300 Mbps", t:"Fiber", s:300, up:300, $:49.99},
@@ -391,7 +394,7 @@
     e.preventDefault();
     const z = document.getElementById("zip").value.trim(), msg = document.getElementById("zipMsg");
     if(!/^\d{5}$/.test(z)){ msg.style.color="#FFD0D0"; msg.textContent="Enter a 5-digit US ZIP code."; return; }
-    msg.style.color=""; msg.innerHTML = `Showing plans for ${z}. Call <a href="tel:${PHONE_TEL}" style="color:#fff">${PHONE_DISPLAY}</a> to confirm your exact address.`;
+    msg.style.color=""; msg.innerHTML = `These are national starting prices. Call <a href="tel:${PHONE_TEL}" style="color:#fff">${PHONE_DISPLAY}</a> to check which plans serve ${z}.`;
     minSpeed = 0; render();
     document.getElementById("compare").scrollIntoView();
   });
